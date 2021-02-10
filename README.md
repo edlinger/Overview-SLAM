@@ -1,133 +1,208 @@
-# Awesome SLAM [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome LIDAR [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
 
-Simultaneous Localization and Mapping, also known as SLAM, is the computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it.
+<img src="img/lidar.svg" align="right" width="100">
 
-## News
-* For researchers, please read the recent review paper, [Past, Present, and Future of Simultaneous Localization And Mapping: Towards the Robust-Perception Age](https://arxiv.org/abs/1606.05830), from Cesar Cadena, Luca Carlone et al.
+> A curated list of awesome LIDAR sensors and its applications.
 
-## Table of Contents
+[LIDAR](https://en.wikipedia.org/wiki/Lidar) is a remote sensing sensor that uses laser light to measure the surroundings in ~cm accuracy. The sensory data is usually referred as point cloud which means set of data points in 3D or 2D. The list contains hardwares, datasets, point cloud-processing algorithms, point cloud frameworks, simulators etc.
 
-* **[Books](#books)**  
+Contributions are welcome! Please [check out](contributing.md) our guidelines.
 
-* **[Courses, Lectures and Workshops](#courses-lectures-and-workshops)**  
+## Contents
 
-* **[Papers](#papers)**  
+- [Conventions](#conventions)
+- [Manufacturers](#manufacturers)
+- [Datasets](#datasets)
+- [Libraries](#libraries)
+- [Frameworks](#frameworks)
+- [Algorithms](#algorithms)
+  - [Basic matching algorithms](#basic-matching-algorithms)
+  - [Semantic segmentation](#semantic-segmentation)
+  - [Simultaneous localization and mapping SLAM and LIDAR-based odometry and or mapping LOAM](#simultaneous-localization-and-mapping-slam-and-lidar-based-odometry-and-or-mapping-loam)
+  - [Object detection and object tracking](#object-detection-and-object-tracking)
+- [Simulators](#simulators)
+- [Related awesome](#related-awesome)
+- [Others](#others)
 
-* **[Researchers](#researchers)**  
+## Conventions
 
-* **[Datasets](#datasets)**  
+- Any list item with an OctoCat :octocat: has a GitHub repo or organization
+- Any list item with a RedCircle :red_circle: has YouTube videos or channel
+- Any list item with a Paper :newspaper: has a scientific paper or detailed description
 
-* **[Code](#Code)**  
+## Manufacturers
 
-* **[Miscellaneous](#miscellaneous)**  
+- [Velodyne](https://velodynelidar.com/) - Velodyne is a mechanical and solid-state LIDAR manufacturer. The headquarter is in San Jose, California, USA.
+  - [YouTube channel :red_circle:](https://www.youtube.com/user/VelodyneLiDAR)
+  - [ROS driver :octocat:](https://github.com/ros-drivers/velodyne)
+- [Ouster](https://ouster.com/) - LIDAR manufacturer, specializing in digital-spinning LiDARs. Ouster is headquartered in San Francisco, USA.
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/Ouster-lidar)
+  - [GitHub organization :octocat:](https://github.com/ouster-lidar)
+- [Livox](https://www.livoxtech.com/) - LIDAR manufacturer.
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCnLpB5QxlQUexi40vM12mNQ)
+  - [GitHub organization :octocat:](https://github.com/Livox-SDK)
+- [SICK](https://www.sick.com/ag/en/) - Sensor and automation manufacturer, the headquarter is located in Waldkirch, Germany.
+  - [YouTube channel :red_circle:](https://www.youtube.com/user/SICKSensors)
+  - [GitHub organization :octocat:](https://github.com/SICKAG)
+- [Hokuyo](https://www.hokuyo-aut.jp/) - Sensor and automation manufacturer, headquartered in Osaka, Japan.
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCYzJXC82IEy-h-io2REin5g)
+- [Pioneer](http://autonomousdriving.pioneer/en/3d-lidar/) - LIDAR manufacturer, specializing in MEMS mirror-based raster scanning LiDARs (3D-LiDAR). Pioneer is headquartered in Tokyo, Japan.
+  - [YouTube channel :red_circle:](https://www.youtube.com/user/PioneerCorporationPR)
+- [Luminar](https://www.luminartech.com/) - LIDAR manufacturer focusing on compact, auto-grade sensors. Luminar is headquartered Palo Alto, California, USA.
+  - [Vimeo channel :red_circle:](https://vimeo.com/luminartech)
+  - [GitHub organization :octocat:](https://github.com/luminartech)
+- [Hesai](https://www.hesaitech.com/) - Hesai Technology is a LIDAR manufacturer, founded in Shanghai, China.
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCG2_ffm6sdMsK-FX8yOLNYQ/videos)
+  - [GitHub organization :octocat:](https://github.com/HesaiTechnology)
+- [Robosense](http://www.robosense.ai/) - RoboSense (Suteng Innovation Technology Co., Ltd.) is a LIDAR sensor, AI algorithm and IC chipset maufactuirer based in Shenzhen and Beijing (China).
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCYCK8j678N6d_ayWE_8F3rQ)
+  - [GitHub organization :octocat:](https://github.com/RoboSense-LiDAR)
+- [Ibeo](https://www.ibeo-as.com/) - Ibeo Automotive Systems GmbH is an automotive industry / environmental detection laserscanner / LIDAR manufacturer, based in Hamburg, Germany.
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/IbeoAutomotive/)
+- [Innoviz](https://innoviz.tech/) - Innoviz technologies / specializes in solid-state LIDARs.
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCVc1KFsu2eb20M8pKFwGiFQ)
+- [Quanenergy](https://quanergy.com/) - Quanenergy Systems / solid-state and mechanical LIDAR sensors / offers End-to-End solutions in Mapping, Industrial Automation, Transportation and Security. The headquarter is located in Sunnyvale, California, USA.
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/QuanergySystems)
+- [Cepton](https://www.cepton.com/index.html) - Cepton (Cepton Technologies, Inc.) / pioneers in frictionless, and mirrorless design, self-developed MMT (micro motion technology) lidar technology. The headquarter is located in San Jose, California, USA.
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCUgkBZZ1UWWkkXJ5zD6o8QQ)
+- [Blickfeld](https://www.blickfeld.com/) - Blickfeld is a solid-state LIDAR manufacturer for autonomous mobility and IoT, based in München, Germany.
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/BlickfeldLiDAR)
+  - [GitHub organization :octocat:](https://github.com/Blickfeld)
+- [Neuvition](https://www.neuvition.com/) - Neuvition is a solid-state LIDAR manufacturer based in Wujiang, China.
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UClFjlekWJo4T5bfzxX0ZW3A)
 
-* **[Contributing](#contributing)**  
+## Datasets
+
+- [Ford Dataset](https://avdata.ford.com/) - The dataset is time-stamped and contains raw data from all the sensors, calibration values, pose trajectory, ground truth pose, and 3D maps. The data is Robot Operating System (ROS) compatible.
+  - [Paper :newspaper:](https://arxiv.org/pdf/2003.07969.pdf)
+  - [GitHub repository :octocat:](https://github.com/Ford/AVData)
+- [Audi A2D2 Dataset](https://www.a2d2.audi) - The dataset features 2D semantic segmentation, 3D point clouds, 3D bounding boxes, and vehicle bus data.
+- [Waymo Open Dataset](https://waymo.com/open/) - The dataset contains independently-generated labels for lidar and camera data, not simply projections.
+- [Oxford RobotCar](https://robotcar-dataset.robots.ox.ac.uk/) - The Oxford RobotCar Dataset contains over 100 repetitions of a consistent route through Oxford, UK, captured over a period of over a year. 
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/ORIOxfordRoboticsInstitute)
+  - [Paper :newspaper:](https://robotcar-dataset.robots.ox.ac.uk/images/RCD_RTK.pdf)
+- [EU Long-term Dataset](https://epan-utbm.github.io/utbm_robocar_dataset/) - This dataset was collected with our robocar (in human driving mode of course), equipped up to eleven heterogeneous sensors, in the downtown (for long-term data) and a suburb (for roundabout data) of Montbéliard in France. The vehicle speed was limited to 50 km/h following the French traffic rules.
+- [NuScenes](https://www.nuscenes.org/) - Public large-scale dataset for autonomous driving.
+  - [Paper :newspaper:](https://arxiv.org/pdf/1903.11027.pdf)
+- [Lyft](https://level5.lyft.com/dataset/) - Public dataset collected by a fleet of Ford Fusion vehicles equipped with LIDAR and camera.
+- [KITTI](http://www.cvlibs.net/datasets/kitti/raw_data.php) - Widespread public dataset, pirmarily focusing on computer vision applications, but also contains LIDAR point cloud.
+- [Semantic KITTI](http://semantic-kitti.org/) - Dataset for semantic and panoptic scene segmentation.
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=3qNOXvkpK4I)
+- [CADC - Canadian Adverse Driving Conditions Dataset](http://cadcd.uwaterloo.ca/) - Public large-scale dataset for autonomous driving in adverse weather conditions (snowy weather).
+  - [Paper :newspaper:](https://arxiv.org/pdf/2001.10117.pdf)
+- [UofTPed50 Dataset](https://www.autodrive.utoronto.ca/uoftped50) - University of Toronto, aUToronto's self-driving car dataset, which contains GPS/IMU, 3D LIDAR, and Monocular camera data. It can be used for 3D pedestrian detection.
+  - [Paper :newspaper:](https://arxiv.org/pdf/1905.08758.pdf)
+- [PandaSet Open Dataset](https://scale.com/open-datasets/pandaset) - Public large-scale dataset for autonomous driving provided by Hesai & Scale. It enables researchers to study challenging urban driving situations using the full sensor suit of a real self-driving-car.
+- [Cirrus dataset](https://developer.volvocars.com/open-datasets/cirrus/) A public datatset from non-uniform distribution of LIDAR scanning patterns with emphasis on long range. In this dataset Luminar Hydra LIDAR is used. The dataset is available at the Volvo Cars Innovation Portal.
+  - [Paper :newspaper:](https://arxiv.org/pdf/2012.02938.pdf)
+
+## Libraries
+
+- [Point Cloud Library (PCL)](http://www.pointclouds.org/) - Popular highly parallel programming library, with numerous industrial and research use-cases. 
+  - [GitHub repository :octocat:](https://github.com/PointCloudLibrary/pcl)
+- [Open3D library](http://www.open3d.org/docs/release/) - Open3D library contanins 3D data processing and visualization algorithms. It is open-source and supports both C++ and Python.
+  - [GitHub repository :octocat:](https://github.com/intel-isl/Open3D)
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UCRJBlASPfPBtPXJSPffJV-w)
+- [PyTorch Geometric :newspaper:](https://arxiv.org/pdf/1903.02428.pdf) - A geometric deep learning extension library for PyTorch.
+  - [GitHub repository :octocat:](https://github.com/rusty1s/pytorch_geometric)
+- [PyTorch3d](https://pytorch3d.org/) - PyTorch3d is a library for deep learning with 3D data written and maintained by the Facebook AI Research Computer Vision Team.
+  - [GitHub repository :octocat:](https://github.com/facebookresearch/pytorch3d)
+- [Kaolin](https://kaolin.readthedocs.io/en/latest/) - Kaolin is a PyTorch Library for Accelerating 3D Deep Learning Research written by NVIDIA Technologies for game and application developers.
+  - [GitHub repository :octocat:](https://github.com/NVIDIAGameWorks/kaolin/)
+  - [Paper :newspaper:](https://arxiv.org/pdf/1911.05063.pdf)
+- [PyVista](https://docs.pyvista.org/) - 3D plotting and mesh analysis through a streamlined interface for the Visualization Toolkit.
+  - [GitHub repository :octocat:](https://github.com/pyvista/pyvista)
+  - [Paper :newspaper:](https://joss.theoj.org/papers/10.21105/joss.01450)
+- [pyntcloud](https://pyntcloud.readthedocs.io/en/latest/) - Pyntcloud is a Python 3 library for working with 3D point clouds leveraging the power of the Python scientific stack.
+  - [GitHub repository :octocat:](https://github.com/daavoo/pyntcloud)
+
+## Frameworks
+
+- [Autoware](https://www.autoware.ai/) - Popular framework in academic and research applications of autonomous vehicles.
+  - [GitLab repository :octocat:](https://gitlab.com/autowarefoundation/autoware.ai)
+  - [Paper :newspaper:](https://www.researchgate.net/profile/Takuya_Azumi/publication/327198306_Autoware_on_Board_Enabling_Autonomous_Vehicles_with_Embedded_Systems/links/5c9085da45851564fae6dcd0/Autoware-on-Board-Enabling-Autonomous-Vehicles-with-Embedded-Systems.pdf)
+- [Baidu Apollo](https://apollo.auto/) - Apollo is a popular framework which accelerates the development, testing, and deployment of Autonomous Vehicles.
+  - [GitHub repository :octocat:](https://github.com/ApolloAuto/apollo)
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/ApolloAuto)
+
+## Algorithms
+
+### Basic matching algorithms
+- [Iterative closest point :red_circle:](https://www.youtube.com/watch?v=uzOCS_gdZuM) - The must-have algorithm for feature matching applications (ICP).
+- [Normal distributions transform :red_circle:](https://www.youtube.com/watch?v=0YV4a2asb8Y) - More recent massively-parallel approach to feature matching (NDT).
+
+### Semantic segmentation
+- [RangeNet++ :newspaper:](https://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/milioto2019iros.pdf) - Fast and Accurate LiDAR Sematnic Segmentation with fully convolutional network.
+  - [GitHub repository :octocat:](https://github.com/PRBonn/rangenet_lib)
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=uo3ZuLuFAzk)
+- [PolarNet :newspaper:](https://arxiv.org/pdf/2003.14032.pdf) - An Improved Grid Representation for Online LiDAR Point Clouds Semantic Segmentation.
+  - [GitHub repository :octocat:](https://github.com/edwardzhou130/PolarSeg)
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=iIhttRSMqjE)
+- [Frustum PointNets :newspaper:](https://arxiv.org/pdf/1711.08488.pdf) - Frustum PointNets for 3D Object Detection from RGB-D Data.
+  - [GitHub repository :octocat:](https://github.com/charlesq34/frustum-pointnets)
+- [Study of LIDAR Semantic Segmentation](https://larissa.triess.eu/scan-semseg/) - Scan-based Semantic Segmentation of LiDAR Point Clouds: An Experimental Study IV 2020.
+  - [Paper :newspaper:](https://arxiv.org/abs/2004.11803)
+  - [GitHub repository :octocat:](http://ltriess.github.io/scan-semseg)
+
+### Simultaneous localization and mapping SLAM and LIDAR-based odometry and or mapping LOAM
+- [LOAM J. Zhang and S. Singh :red_circle:](https://youtu.be/8ezyhTAEyHs) - LOAM: Lidar Odometry and Mapping in Real-time.
+- [LeGO-LOAM :octocat:](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) - A lightweight and ground optimized lidar odometry and mapping (LeGO-LOAM) system for ROS compatible UGVs. 
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=7uCxLUs9fwQ)
+- [Cartographer :octocat:](https://github.com/cartographer-project/cartographer) - Cartographer is ROS compatible system that provides real-time simultaneous localization and mapping (SLAM) in 2D and 3D across multiple platforms and sensor configurations.
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=29Knm-phAyI)
+- [SuMa++ :newspaper:](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2019iros.pdf) - LiDAR-based Semantic SLAM.
+  - [GitHub repository :octocat:](https://github.com/PRBonn/semantic_suma/)
+  - [YouTube video :red_circle:](https://youtu.be/uo3ZuLuFAzk)
+- [OverlapNet :newspaper:](http://www.ipb.uni-bonn.de/wp-content/papercite-data/pdf/chen2020rss.pdf) -  Loop Closing for LiDAR-based SLAM.
+  - [GitHub repository :octocat:](https://github.com/PRBonn/OverlapNet)
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=YTfliBco6aw)
+- [LIO-SAM :newspaper:](https://arxiv.org/pdf/2007.00258.pdf) - Tightly-coupled Lidar Inertial Odometry via Smoothing and Mapping.
+  - [GitHub repository :octocat:](https://github.com/TixiaoShan/LIO-SAM)
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=A0H8CoORZJU)
 
 
-### Books
-- [State Estimation for Robotic -- A Matrix Lie Group Approach](http://asrl.utias.utoronto.ca/~tdb/bib/barfoot_ser17.pdf) by Timothy D. Barfoot, 2018
-- [Simultaneous Localization and Mapping for Mobile Robots: Introduction and Methods](http://www.igi-global.com/book/simultaneous-localization-mapping-mobile-robots/66380) by Juan-Antonio Fernández-Madrigal and José Luis Blanco Claraco, 2012
-- [Simultaneous Localization and Mapping: Exactly Sparse Information Filters ](http://www.worldscientific.com/worldscibooks/10.1142/8145/) by Zhan Wang, Shoudong Huang and Gamini Dissanayake, 2011
-- [Probabilistic Robotics](http://www.probabilistic-robotics.org/) by Dieter Fox, Sebastian Thrun, and Wolfram Burgard, 2005
-- [An Invitation to 3-D Vision -- from Images to Geometric Models](http://vision.ucla.edu/MASKS/) by Yi Ma, Stefano Soatto, Jana Kosecka and Shankar S. Sastry, 2005
-- [Multiple View Geometry in Computer Vision](http://www.robots.ox.ac.uk/~vgg/hzbook/) by Richard Hartley and Andrew Zisserman, 2004
-- [Numerical Optimization](http://home.agh.edu.pl/~pba/pdfdoc/Numerical_Optimization.pdf) by Jorge Nocedal and Stephen J. Wright, 1999
+### Object detection and object tracking
+- [Learning to Optimally Segment Point Clouds :newspaper:](https://arxiv.org/abs/1912.04976) - By Peiyun Hu, David Held, and Deva Ramanan at Carnegie Mellon University. IEEE Robotics and Automation Letters, 2020.
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=wLxIAwIL870)
+  - [GitHub repository :octocat:](https://github.com/peiyunh/opcseg)
+- [Leveraging Heteroscedastic Aleatoric Uncertainties for Robust Real-Time LiDAR 3D Object Detection :newspaper:](https://arxiv.org/pdf/1809.05590.pdf) - By Di Feng, Lars Rosenbaum, Fabian Timm, Klaus Dietmayer. 30th IEEE Intelligent Vehicles Symposium, 2019.
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=2DzH9COLpkU)
+- [What You See is What You Get: Exploiting Visibility for 3D Object Detection :newspaper:](https://arxiv.org/pdf/1912.04986.pdf) - By Peiyun Hu, Jason Ziglar, David Held, Deva Ramanan, 2019.
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=497OF-otY2k)
+  - [GitHub repository :octocat:](https://github.com/peiyunh/WYSIWYG)
 
+## Simulators
+- [CoppeliaSim](https://www.coppeliarobotics.com/coppeliaSim) - Cross-platform general-purpose robotic simulator (formerly known as V-REP).
+  - [YouTube channel :red_circle:](https://www.youtube.com/user/VirtualRobotPlatform)
+- [OSRF Gazebo](http://gazebosim.org/) - OGRE-based general-purpose robotic simulator, ROS/ROS2 compatible.
+  - [GitHub repository :octocat:](https://github.com/osrf/gazebo)
+- [CARLA](https://carla.org/) - Unreal Engine based simulator for automotive applications. Compatible with Autoware, Baidu Apollo and ROS/ROS2.
+  - [GitHub repository :octocat:](https://github.com/carla-simulator/carla)
+  - [YouTube channel :red_circle:](https://www.youtube.com/channel/UC1llP9ekCwt8nEJzMJBQekg)
+- [LGSVL](https://www.lgsvlsimulator.com/) - Unity Engine based simulator for automotive applications. Compatible with Autoware, Baidu Apollo and ROS/ROS2.
+  - [GitHub repository :octocat:](https://github.com/lgsvl/simulator)
+  - [YouTube channel :red_circle:](https://www.youtube.com/c/LGSVLSimulator)
+- [AirSim](https://microsoft.github.io/AirSim) - Unreal Engine based simulator for drones and automotive. Compatible with ROS.
+  - [GitHub repository :octocat:](https://github.com/microsoft/AirSim)
+  - [YouTube video :red_circle:](https://www.youtube.com/watch?v=gnz1X3UNM5Y)
 
+## Related awesome
+- [Awesome point cloud analysis :octocat:](https://github.com/Yochengliu/awesome-point-cloud-analysis#readme)
+- [Awesome robotics :octocat:](https://github.com/Kiloreux/awesome-robotics#readme)
+- [Awesome robotics libraries :octocat:](https://github.com/jslee02/awesome-robotics-libraries#readme)
+- [Awesome ROS2 :octocat:](https://github.com/fkromer/awesome-ros2#readme)
+- [Awesome artificial intelligence :octocat:](https://github.com/owainlewis/awesome-artificial-intelligence#readme)
+- [Awesome computer vision :octocat:](https://github.com/jbhuang0604/awesome-computer-vision#readme)
+- [Awesome machine learning :octocat:](https://github.com/josephmisiti/awesome-machine-learning#readme)
+- [Awesome deep learning :octocat:](https://github.com/ChristosChristofidis/awesome-deep-learning#readme)
+- [Awesome reinforcement learning :octocat:](https://github.com/aikorea/awesome-rl/#readme)
+- [Awesome SLAM datasets :octocat:](https://github.com/youngguncho/awesome-slam-datasets#readme)
+- [Awesome electronics :octocat:](https://github.com/kitspace/awesome-electronics#readme) 
+- [Awesome vehicle security and car hacking :octocat:](https://github.com/jaredthecoder/awesome-vehicle-security#readme)
 
-### Courses, Lectures and Workshops
-- [SLAM Tutorial@ICRA 2016](http://www.dis.uniroma1.it/~labrococo/tutorial_icra_2016/)
-- [Geometry and Beyond - Representations, Physics, and Scene Understanding for Robotics](http://rss16-representations.mit.edu/) at Robotics: Science and Systems (2016)
-- [Robotics - UPenn](https://www.coursera.org/specializations/robotics) on Coursera by Vijay Kumar (2016)
-- [Robot Mapping - UniFreiburg](http://ais.informatik.uni-freiburg.de/teaching/ws15/mapping/) by  Gian Diego Tipaldi and Wolfram Burgard (2015-2016)
-- [Robot Mapping - UniBonn](http://www.ipb.uni-bonn.de/robot-mapping/) by Cyrill Stachniss (2016)
-- [Introduction to Mobile Robotics - UniFreiburg](http://ais.informatik.uni-freiburg.de/teaching/ss16/robotics/) by Wolfram Burgard, Michael Ruhnke and Bastian Steder (2015-2016)
-- [Computer Vision II: Multiple View Geometry  - TUM](http://vision.in.tum.de/teaching/ss2016/mvg2016) by Daniel Cremers ( Spring 2016)
-- [Advanced Robotics - UCBerkeley](http://www.cs.berkeley.edu/~pabbeel/) by Pieter Abbeel (Fall 2015)
-- [Mapping, Localization, and Self-Driving Vehicles](https://www.youtube.com/watch?v=x5CZmlaMNCs) at CMU RI seminar by John Leonard (2015)
-- [The Problem of Mobile Sensors: Setting future goals and indicators of progress for SLAM](http://ylatif.github.io/movingsensors/) sponsored by Australian Centre for Robotics and Vision (2015)
-- [Robotics - UPenn](https://alliance.seas.upenn.edu/~meam620/wiki/index.php?n=Main.HomePage) by Philip Dames and Kostas Daniilidis (2014)
-- [Autonomous Navigation for Flying Robots](http://vision.in.tum.de/teaching/ss2014/autonavx) on EdX by Jurgen Sturm and Daniel Cremers (2014)
-- [Robust and Efficient Real-time Mapping for Autonomous Robots](https://www.youtube.com/watch?v=_W3Ua1Yg2fk) at CMU RI seminar by Michael Kaess (2014)
-- [KinectFusion - Real-time 3D Reconstruction and Interaction Using a Moving Depth Camera](https://www.youtube.com/watch?v=bRgEdqDiOuQ) by David Kim (2012)
-- [SLAM Summer School](http://www.acfr.usyd.edu.au/education/summerschool.shtml) organized by Australian Centre for Field Robotics (2009)
-- [SLAM Summer School](http://www.robots.ox.ac.uk/~SSS06/Website/index.html) organized by University of Oxford and Imperial College London (2006)
-- [SLAM Summer School](http://www.cas.kth.se/SLAM/) organized by KTH Royal Institute of Technology (2002)
-
-
-### Papers
-- [Past, Present, and Future of Simultaneous Localization And Mapping: Towards the Robust-Perception Age](https://arxiv.org/abs/1606.05830) (2016)
-- [Direct Sparse Odometry](https://arxiv.org/abs/1607.02565) (2016)
-- [Modelling Uncertainty in Deep Learning for Camera Relocalization](https://arxiv.org/abs/1509.05909) (2016)
-- [Large-Scale Cooperative 3D Visual-Inertial Mapping in a Manhattan World](http://mars.cs.umn.edu/papers/CM_line.pdf) (2016)
-- [Towards Lifelong Feature-Based Mapping in Semi-Static Environments](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44821.pdf) (2016)
-- [Tree-Connectivity: Evaluating the Graphical Structure of SLAM](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7487264) (2016)
-- [Visual-Inertial Direct SLAM](webdiis.unizar.es/~jcivera/papers/concha_etal_icra16.pdf) (2016)
-- [A Unified Resource-Constrained Framework for Graph SLAM](people.csail.mit.edu/lpaull/publications/Paull_ICRA_2016.pdf) (2016)
-- [Multi-Level Mapping: Real-time Dense Monocular SLAM](https://groups.csail.mit.edu/rrg/papers/greene_icra16.pdf) (2016)
-- [Lagrangian duality in 3D SLAM: Verification techniques and optimal solutions](http://arxiv.org/abs/1506.00746) (2015)
-- [A Solution to the Simultaneous Localization and Map Building (SLAM) Problem](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=938381&tag=1)
-- [Simulataneous Localization and Mapping with the Extended Kalman Filter](http://www.iri.upc.edu/people/jsola/JoanSola/objectes/curs_SLAM/SLAM2D/SLAM%20course.pdf)
-- [Robotic Mapping: A Survey](http://robots.stanford.edu/papers/thrun.mapping-tr.pdf)
-
-
-### Researchers
-
-#### United States
-- [John Leonard](https://www.csail.mit.edu/user/817)
-- [Sebastian Thrun](http://robots.stanford.edu/)
-- [Frank Dellaert](http://borg.cc.gatech.edu/)
-- [Dieter Fox](homes.cs.washington.edu/~fox/)
-- [Stergios I. Roumeliotis](http://www-users.cs.umn.edu/~stergios/)
-- [Vijay Kumar](http://www.kumarrobotics.org/)
-- [Ryan Eustice](http://robots.engin.umich.edu/~ryan/)
-- [Michael Kaess](http://frc.ri.cmu.edu/~kaess/)
-- [Guoquan (Paul) Huang](http://udel.edu/~ghuang/)
-- [Gabe Sibley](https://arpg.colorado.edu/people/)
-- [Luca Carlone](http://www.lucacarlone.com/)
-- [Andrea Censi](censi.mit.edu/)
-
-
-#### Europe
-- [Paul Newman](http://mrg.robots.ox.ac.uk/)
-- [Roland Siegwart](http://www.asl.ethz.ch/the-lab/people/person-detail.html?persid=29981)
-- [Juan Nieto](http://www.nietojuan.com/)
-- [Wolfram Burgard](http://www2.informatik.uni-freiburg.de/~burgard/)
-- [Jose Neira](webdiis.unizar.es/~neira/)
-- [Davide Scaramuzza](http://rpg.ifi.uzh.ch/people_scaramuzza.html)
-
-#### Australia
-- [Cesar Cadena](http://cs.adelaide.edu.au/~cesar/)
-- [Ian Reid](https://cs.adelaide.edu.au/~ianr/)
-- [Tim Bailey](http://www-personal.acfr.usyd.edu.au/tbailey/)
-- [Gamini Dissanayake](http://www.uts.edu.au/staff/gamini.dissanayake)
-- [Shoudong Huang](http://services.eng.uts.edu.au/~sdhuang/)
-
-
-### Datasets
-
-1.  [Intel Research Lab (Seattle)](http://kaspar.informatik.uni-freiburg.de/~slamEvaluation/datasets/intel.clf)
-
-
-### Code
-
-1.  [ORB-SLAM](https://github.com/raulmur/ORB_SLAM)  
-2.  [LSD-SLAM](https://github.com/tum-vision/lsd_slam)
-3.  [ORB-SLAM2](https://github.com/raulmur/ORB_SLAM2)
-4.  [DVO: Dense Visual Odometry](https://github.com/tum-vision/dvo_slam)
-5.  [SVO: Semi-Direct Monocular Visual Odometry](https://github.com/uzh-rpg/rpg_svo)
-6.  [G2O: General Graph Optimization](https://github.com/RainerKuemmerle/g2o)
-7.  [RGBD-SLAM](https://github.com/felixendres/rgbdslam_v2)
-
-
-### Miscellaneous
-
-
------
-### Contributing
-Have anything in mind that you think is awesome and would fit in this list? Feel free to send a [pull request](https://github.com/kanster/awesome-slam/pulls).
-
------
-## License
-
-[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
+## Others
+- [Pointcloudprinter :octocat:](https://github.com/marian42/pointcloudprinter) - A tool to turn point cloud data from aerial lidar scans into solid meshes for 3D printing.
+- [Pcx :octocat:](https://github.com/keijiro/Pcx) - Point cloud importer/renderer for Unity.
+- [Bpy :octocat:](https://github.com/uhlik/bpy) - Point cloud importer/renderer/editor for Blender, Point Cloud visualizer.
+- [Semantic Segmentation Editor :octocat:](https://github.com/Hitachi-Automotive-And-Industry-Lab/semantic-segmentation-editor) - Point cloud and image semantic segmentation editor by Hitachi Automotive And Industry Laboratory.
+- [Photogrammetry importer :octocat:](https://github.com/SBCV/Blender-Addon-Photogrammetry-Importer) - Blender addon to import reconstruction results of several libraries.
