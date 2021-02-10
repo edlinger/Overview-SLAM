@@ -1,4 +1,4 @@
-# Awesome LIDAR [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+# Awesome LIDAR 
 
 <img src="img/lidar.svg" align="right" width="100">
 
