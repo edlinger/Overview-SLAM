@@ -123,11 +123,3 @@ Simultaneous Localization and Mapping, also known as SLAM, is the computational 
 ### Miscellaneous
 
 
------
-### Contributing
-Have anything in mind that you think is awesome and would fit in this list? Feel free to send a [pull request](https://github.com/kanster/awesome-slam/pulls).
-
------
-## License
-
-[![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)](http://creativecommons.org/publicdomain/zero/1.0/)
