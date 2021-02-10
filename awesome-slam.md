@@ -1,4 +1,4 @@
-# Awesome SLAM [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+# Awesome SLAM 
 
 Simultaneous Localization and Mapping, also known as SLAM, is the computational problem of constructing or updating a map of an unknown environment while simultaneously keeping track of an agent's location within it.
 
